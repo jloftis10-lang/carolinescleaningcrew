@@ -170,6 +170,7 @@ p { margin: 0 0 1em; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .card p { color: var(--muted); margin: 0; }
+.card .price { color: var(--navy); font-weight: 700; margin-top: 12px; }
 .card-icon {
   width: 52px; height: 52px; border-radius: 14px;
   background: var(--sky); display: grid; place-items: center; margin-bottom: 18px;

@@ -15,7 +15,6 @@ Plain HTML/CSS/JS with no build step. Open `index.html` in a browser to preview.
 
 ## Before launch
 
-- Replace the placeholder phone `(619) 555-0100` / `+16195550100` and email `hello@carolinescleaningcrew.com` everywhere in `index.html` (including the JSON-LD block in `<head>`).
 - Create a free form at https://formspree.io and replace `YOUR_FORM_ID` in the quote form's `action`.
 - Confirm the services, neighborhoods, and FAQ answers with Caroline.
 
