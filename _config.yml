@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) settings: keep internal files off the public website.
+# Note: the GitHub repository itself is public, so these files are still readable there.
+exclude:
+  - README.md
+  - docs/
+  - tools/
+  - pricing.json
