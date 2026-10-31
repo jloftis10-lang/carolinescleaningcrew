@@ -20,9 +20,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 // Quote form: submit via fetch so visitors stay on the page
 const form = document.querySelector(".quote-form");
-const status = form.querySelector(".form-status");
 
-form.addEventListener("submit", async (event) => {
+form?.addEventListener("submit", async (event) => {
+  const status = form.querySelector(".form-status");
   event.preventDefault();
   const button = form.querySelector("button[type=submit]");
   button.disabled = true;

@@ -7,10 +7,12 @@ Plain HTML/CSS/JS with no build step. Open `index.html` in a browser to preview.
 
 ## Files
 
-- `index.html` – the whole site (single page)
+- `index.html` – the main page
+- `about.html` – about Caroline
 - `styles.css` – styles; brand colors are defined at the top in `:root`
 - `script.js` – mobile menu and quote-form submission
 - `assets/` – logo and favicon
+- `assets/results/` – before & after photos (resized to 1000px, metadata stripped)
 - `CNAME` – custom domain for GitHub Pages
 
 ## Before launch
