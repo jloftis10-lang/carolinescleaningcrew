@@ -1,19 +1,20 @@
 # Caroline's Cleaning Crew
 
-Website for Caroline's Cleaning Crew, an insured, owner-operated house cleaning business in San Diego County.
+Website for Caroline's Cleaning Crew, a licensed, insured, owner-operated house cleaning business in North County San Diego.
 Domain: https://carolinescleaningcrew.com (not live yet; see Hosting below)
 
 Plain HTML/CSS/JS with no build step, hosted on GitHub Pages. Open `index.html` in a browser to preview.
-Once GitHub Pages is turned on, **pushing to `main` publishes to the live site.**
+GitHub Pages is on: **pushing to `main` publishes to the live site** (the domain shows it once its DNS points to GitHub).
 
 ## Files
 
 - `index.html` – homepage: recurring plans, "quotes as low as $100", before & after, FAQ, quote form
 - `services.html` – room-by-room checklist, add-ons, other services
 - `about.html` – about Caroline
+- `clutter-hoarding-cleanup.html` – judgment-free clutter and hoarding cleanup
 - `404.html` – not-found page (GitHub Pages serves it with a 404 status)
 - `styles.css` – styles; brand colors are at the top in `:root`
-- `script.js` – menu, quote form, mobile call/text bar, analytics hooks
+- `script.js` – menu, quote form, call/text banner, analytics hooks
 - `assets/` – logo, favicon, and `results/` before & after photos (resized to 1000px, metadata stripped)
 - `tools/` – the pre-publish check (below)
 - `docs/` – [launch blockers](docs/launch-blockers.md) and [launch handoff](docs/launch-handoff.md)
@@ -21,7 +22,7 @@ Once GitHub Pages is turned on, **pushing to `main` publishes to the live site.*
 
 ## Prices
 
-The site shows no price list, only "Quotes as low as $100" (hero, pricing section, FAQ, and the closing sections of the Services and About pages). If that starting figure changes, search the HTML files for `$100` and update each one.
+The site shows no price list, only "Quotes as low as $100" (hero, pricing section, FAQ, and the closing sections of the Services and About pages). The FAQ explains it's for a surface clean of a studio or 1-bedroom home. If that starting figure changes, search the HTML files for `$100` and update each one.
 
 ## Before publishing
 

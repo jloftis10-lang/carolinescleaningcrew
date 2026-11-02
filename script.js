@@ -32,13 +32,17 @@ if (toggle && nav) {
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-// Mobile call/text/quote bar: hide it while the quote form is on screen so it never covers fields
-const mobileBar = document.querySelector(".mobile-bar");
-const quoteSection = document.getElementById("quote");
-if (mobileBar && quoteSection && "IntersectionObserver" in window) {
-  new IntersectionObserver(([entry]) => {
-    mobileBar.classList.toggle("is-hidden", entry.isIntersecting);
-  }).observe(quoteSection);
+// Call/text banner: hide it while the quote form or footer is on screen so it never covers
+// fields or the footer's own contact links
+const contactBar = document.querySelector(".contact-bar");
+const barTargets = [document.getElementById("quote"), document.querySelector(".site-footer")].filter(Boolean);
+if (contactBar && barTargets.length && "IntersectionObserver" in window) {
+  const onScreen = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => (entry.isIntersecting ? onScreen.add(entry.target) : onScreen.delete(entry.target)));
+    contactBar.classList.toggle("is-hidden", onScreen.size > 0);
+  });
+  barTargets.forEach((target) => observer.observe(target));
 }
 
 // Quote form

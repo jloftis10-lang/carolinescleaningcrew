@@ -357,8 +357,24 @@ p { margin: 0 0 1em; }
 .footer-links { display: grid; gap: 6px; text-align: right; align-content: start; }
 .copyright { grid-column: 1 / -1; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 20px; margin: 8px 0 0; font-size: 0.9rem; }
 
-/* Mobile call / text / quote bar */
-.mobile-bar { display: none; }
+/* Call / text banner: a floating card on desktop, a bottom bar on phones */
+.contact-bar {
+  position: fixed; right: 24px; bottom: 24px; z-index: 60;
+  display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px;
+  width: 340px; padding: 16px;
+  background: var(--white); border: 1px solid var(--line); border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(36, 58, 102, 0.18);
+  transition: transform 0.2s, visibility 0.2s;
+}
+.contact-bar-label { grid-column: 1 / -1; margin: 0 0 4px; text-align: center; line-height: 1.35; }
+.contact-bar-label strong { display: block; color: var(--navy); font-size: 1.15rem; font-weight: 800; }
+.contact-bar-label span { color: var(--muted); font-size: 0.9rem; }
+.contact-bar a {
+  display: grid; place-items: center; min-height: 44px; border-radius: 999px;
+  font-weight: 700; text-decoration: none; color: var(--navy); border: 2px solid var(--navy);
+}
+.contact-bar .contact-bar-quote { background: var(--yellow); border-color: var(--yellow); color: var(--navy-dark); }
+.contact-bar.is-hidden { transform: translateY(calc(100% + 48px)); visibility: hidden; }
 
 /* Responsive */
 @media (max-width: 960px) {
@@ -383,23 +399,23 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 760px) {
+  :root { --bar-height: 92px; }
   html { scroll-padding-bottom: calc(var(--bar-height) + env(safe-area-inset-bottom) + 16px); }
   body { padding-bottom: calc(var(--bar-height) + env(safe-area-inset-bottom)); }
 
-  .mobile-bar {
-    display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px;
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  .contact-bar {
+    left: 0; right: 0; bottom: 0; width: auto; gap: 6px 8px;
     padding: 8px calc(12px + env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left));
-    background: var(--white); border-top: 1px solid var(--line);
+    border: 0; border-top: 1px solid var(--line); border-radius: 0;
     box-shadow: 0 -6px 20px rgba(36, 58, 102, 0.08);
-    transition: transform 0.2s;
   }
-  .mobile-bar a {
-    display: grid; place-items: center; min-height: 48px; border-radius: 999px;
-    font-weight: 700; text-decoration: none; color: var(--navy); border: 2px solid var(--navy);
-  }
-  .mobile-bar .mobile-bar-quote { background: var(--yellow); border-color: var(--yellow); color: var(--navy-dark); }
-  .mobile-bar.is-hidden { transform: translateY(110%); }
+  .contact-bar-label { margin: 0; font-size: 0.95rem; }
+  .contact-bar-label strong { display: inline; font-size: inherit; }
+  .contact-bar-label span { font-size: inherit; }
+  .contact-bar-label span::before { content: "· "; }
+  .contact-bar-number { display: none; }
+  .contact-bar a { min-height: 48px; }
+  .contact-bar.is-hidden { transform: translateY(110%); }
 
   .section { padding: 64px 0; }
   .section-tight { padding: 48px 0; }
@@ -416,9 +432,19 @@ p { margin: 0 0 1em; }
   .footer-links { text-align: left; }
 }
 
+/* Small phones: keep the hero's trust line in view above the taller call/text banner */
+@media (max-width: 380px) {
+  .hero { padding-top: 24px; }
+  .hero .lead { font-size: 0.98rem; line-height: 1.55; }
+  .hero-actions { margin: 16px 0 12px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .bubbles { display: none; }
-  .btn, .card, .mobile-bar, .faq summary::after { transition: none; }
+  .btn, .card, .contact-bar, .faq summary::after { transition: none; }
   .btn:hover, .card:hover { transform: none; }
 }
+
+/* Space between a pull quote and the heading that follows it */
+.story .pull-quote + h2 { margin-top: 40px; }

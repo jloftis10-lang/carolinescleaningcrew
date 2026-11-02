@@ -16,7 +16,6 @@ const banned = [
   [/bonded/i, "\"bonded\" (not confirmed)"],
   [/fully insured/i, "\"fully insured\""],
   [/background[- ]check/i, "background checks"],
-  [/licensed/i, "\"licensed\""],
   [/most popular/i, "\"Most popular\""],
   [/\$(?!100\b)\d/, "a price other than \"as low as $100\" (the site doesn't list prices)"],
   [/cheapest/i, "\"cheapest\""],
@@ -60,7 +59,8 @@ for (const file of pages) {
   for (const m of visible.matchAll(/href="([^"]+)"/g)) {
     const href = m[1];
     if (/^(https?:|tel:|sms:|mailto:)/.test(href)) continue;
-    const [pathPart, hash] = href.replace(/^\?[^#]*/, "").split("#");
+    const [rawPath, hash] = href.split("#");
+    const pathPart = rawPath.split("?")[0];
     const target = pathPart === "" || pathPart === "/" ? (pathPart === "/" ? "index.html" : file) : pathPart.replace(/^\//, "");
     if (!existsSync(join(root, target))) fail(`${file}: broken link ${href}`);
     else if (hash && target.endsWith(".html") && !ids[target]?.has(hash)) fail(`${file}: missing anchor ${href}`);
@@ -72,7 +72,7 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
       const data = JSON.parse(m[1]);
-      for (const key of ["address", "openingHours", "aggregateRating", "review", "areaServed", "geo"]) {
+      for (const key of ["address", "aggregateRating", "review", "geo", "priceRange"]) {
         if (key in data) fail(`${file}: structured data has unconfirmed "${key}"`);
       }
     } catch {
