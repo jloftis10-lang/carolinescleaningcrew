@@ -1,10 +1,9 @@
 // Pre-publish checks for the static site. Run: node tools/check-site.mjs
 // Checks titles/descriptions/canonicals, the sitemap, internal links and anchors,
-// structured data, phone links, and wording the business can't currently back up.
+// structured data, phone links, prices, and wording the business can't currently back up.
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { execFileSync } from "node:child_process";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://carolinescleaningcrew.com/";
@@ -19,7 +18,7 @@ const banned = [
   [/background[- ]check/i, "background checks"],
   [/licensed/i, "\"licensed\""],
   [/most popular/i, "\"Most popular\""],
-  [/\$100\b/, "$100 price (unapproved)"],
+  [/\$(?!100\b)\d/, "a price other than \"as low as $100\" (the site doesn't list prices)"],
   [/cheapest/i, "\"cheapest\""],
   [/near me/i, "\"near me\""],
   [/testimonial|aggregateRating|reviewRating|★/i, "reviews or ratings"],
@@ -87,14 +86,8 @@ for (const url of sitemapUrls) {
   if (!existsSync(join(root, file))) fail(`sitemap: ${url} has no file`);
 }
 
-try {
-  execFileSync(process.execPath, [join(root, "tools", "prices.mjs"), "--check"], { stdio: "pipe" });
-} catch (e) {
-  fail(`prices: ${e.stdout}${e.stderr}`.trim());
-}
-
 if (errors.length) {
   console.error(errors.map((e) => `✗ ${e}`).join("\n"));
   process.exit(1);
 }
-console.log(`✓ ${pages.length} pages checked, sitemap has ${sitemapUrls.length} URLs, prices in sync`);
+console.log(`✓ ${pages.length} pages checked, sitemap has ${sitemapUrls.length} URLs`);

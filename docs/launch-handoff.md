@@ -6,7 +6,7 @@ How the site works, what to check before going live, and how to tell whether it'
 
 - Plain HTML/CSS/JS on **GitHub Pages**, published from `main`. Pushing to `main` deploys to production.
 - The quote form uses **Formspree** with a honeypot field (`_gotcha`) for spam. With JavaScript the form validates in the page and shows success only after Formspree confirms. Without JavaScript the browser's own validation runs and the form posts directly to Formspree. Phone or email can't be made conditionally required without JavaScript.
-- Prices live in `pricing.json`. After changing it, run `node tools/prices.mjs`. Before publishing, run `node tools/check-site.mjs`.
+- The site lists no prices, only "Quotes as low as $100". Before publishing, run `node tools/check-site.mjs`; it flags any other dollar amount.
 - `404.html` is served by GitHub Pages with a real 404 status.
 
 ## Before launch
@@ -34,13 +34,13 @@ How the site works, what to check before going live, and how to tell whether it'
 
 ## Photos
 
-- [ ] A real photo of Caroline: save as `assets/caroline.jpg` and uncomment the marked lines in `index.html` and `about.html`
+- [ ] Optional: replace the AI-generated `assets/caroline.jpg` with a real photo of Caroline
 - [ ] More before & after photos from real jobs, with the client's OK and no personal items or house numbers visible
 
 ## Who does what
 
 - Responds to inquiries: Caroline (decide on a target response time before promising one)
-- Keeps prices current: whoever edits `pricing.json`. Update the door hanger at the same time.
+- Keeps the "as low as $100" line current: whoever edits the site. Keep the door hanger consistent with it.
 - Publishes site changes: the person with push access to `main`
 
 ## Measuring results
@@ -66,4 +66,4 @@ One row per inquiry, with these columns:
 - Each month, count how many inquiries reach each column, and compare by source.
 
 ### Door hanger QR code (recommendation only)
-On the next print run, point the QR code at a distinct URL so door-hanger visits can be counted separately, for example `https://carolinescleaningcrew.com/?utm_source=door-hanger&utm_medium=print&utm_campaign=door-hanger-1`. This needs analytics on the site to be counted. Don't reprint until the $100 vs $120 price is settled.
+On the next print run, point the QR code at a distinct URL so door-hanger visits can be counted separately, for example `https://carolinescleaningcrew.com/?utm_source=door-hanger&utm_medium=print&utm_campaign=door-hanger-1`. This needs analytics on the site to be counted.

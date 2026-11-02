@@ -4,4 +4,3 @@ exclude:
   - README.md
   - docs/
   - tools/
-  - pricing.json

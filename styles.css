@@ -197,18 +197,11 @@ p { margin: 0 0 1em; }
 
 /* Pricing */
 .pricing-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
-.price-table { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 1.1rem; }
-.price-table th, .price-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); }
-.price-table thead th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
-.price-table tbody th { font-weight: 600; color: var(--ink); }
-.price-table td { text-align: right; font-weight: 800; color: var(--navy); font-size: 1.3rem; }
-.price-table thead th:last-child { text-align: right; }
 
 .addons { background: var(--sky); border-radius: 20px; padding: 28px; }
 .addon-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
-.addon-list li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--sky-mid); }
+.addon-list li { padding: 8px 0; border-bottom: 1px solid var(--sky-mid); }
 .addon-list li:last-child { border-bottom: 0; }
-.addon-list li span:last-child { font-weight: 700; color: var(--navy); }
 .addon-list-wide { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 24px; }
 .addon-list-wide li { border-bottom-color: var(--line); }
 
@@ -230,7 +223,7 @@ p { margin: 0 0 1em; }
 .card-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--navy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Before & after */
-.results { display: grid; grid-template-columns: 2fr 3fr; gap: 24px; }
+.results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .result {
   background: var(--white);
   border: 1px solid var(--line);
@@ -238,9 +231,8 @@ p { margin: 0 0 1em; }
   padding: 20px;
 }
 .result-photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.result-photos-3 { grid-template-columns: repeat(3, 1fr); }
 .result figure { position: relative; margin: 0; }
-.result img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 12px; }
+.result img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
 .tag {
   position: absolute; top: 10px; left: 10px;
   padding: 2px 12px; border-radius: 999px;
@@ -420,12 +412,8 @@ p { margin: 0 0 1em; }
   .field-row, .choice-grid { grid-template-columns: 1fr; }
   .owner-intro { flex-direction: column; text-align: center; gap: 20px; }
   .quote-form { padding: 22px; }
-  .result-photos-3 { grid-template-columns: repeat(2, 1fr); }
-  .result-photos-3 figure:first-child { grid-column: 1 / -1; }
-  .result-photos-3 figure:first-child img { aspect-ratio: 4 / 3; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { text-align: left; }
-  .price-table th, .price-table td { padding: 12px 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
