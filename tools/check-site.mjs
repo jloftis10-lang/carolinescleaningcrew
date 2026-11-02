@@ -9,6 +9,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://carolinescleaningcrew.com/";
 const PHONE = "+17604929338";
 const errors = [];
+const launch = process.argv.includes("--launch");
 const fail = (msg) => errors.push(msg);
 
 // Claims that need evidence or approval before they can appear on the site
@@ -34,6 +35,11 @@ const ids = Object.fromEntries(
 
 for (const file of pages) {
   const html = readFileSync(join(root, file), "utf8");
+  if (launch && /action="[^"]*YOUR_FORM_ID/.test(html)) fail(`${file}: quote form still has a placeholder endpoint`);
+  if ((html.match(/<h1[ >]/g) || []).length !== 1) fail(`${file}: expected exactly one h1`);
+  const pageIds = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+  if (new Set(pageIds).size !== pageIds.length) fail(`${file}: duplicate IDs`);
+  if (file === "clutter-hoarding-cleanup.html" && /href="index.html#quote"/.test(html)) fail(`${file}: quote link loses the clutter selection`);
   const visible = html.replace(/<!--[\s\S]*?-->/g, "");
   const noindex = /<meta name="robots" content="[^"]*noindex/.test(html);
   const url = file === "index.html" ? SITE : SITE + file;
@@ -91,3 +97,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`✓ ${pages.length} pages checked, sitemap has ${sitemapUrls.length} URLs`);
+
+if (!launch) console.log("Development checks only. Run with --launch to verify the form endpoint before publishing.");

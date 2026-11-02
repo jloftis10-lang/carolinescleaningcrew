@@ -448,3 +448,20 @@ p { margin: 0 0 1em; }
 
 /* Space between a pull quote and the heading that follows it */
 .story .pull-quote + h2 { margin-top: 40px; }
+
+/* Inquiry form and local coverage */
+[hidden] { display: none !important; }
+#q-service { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+#q-service legend, #q-service .field-error { grid-column: 1 / -1; }
+.form-extras { border: 1px solid #8fb8c8; border-radius: 12px; padding: 14px; }
+.form-extras summary { cursor: pointer; color: var(--navy); font-weight: 700; }
+.form-extras[open] summary { margin-bottom: 16px; }
+.form-unavailable { margin: 0; padding: 16px; background: white; border: 2px solid var(--navy); border-radius: 12px; }
+.btn:disabled { cursor: default; opacity: .7; transform: none; box-shadow: none; }
+.service-towns { list-style: none; padding: 0; margin: 24px auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 640px; }
+.service-towns li { padding: 10px 14px; background: var(--sky); border-radius: 10px; color: var(--navy); font-weight: 600; }
+
+
+.more-results { margin-top: 24px; }
+.more-results summary { cursor: pointer; color: var(--navy); font-weight: 700; padding: 12px 0; }
+.more-results[open] summary { margin-bottom: 16px; }

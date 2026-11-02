@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>About Caroline | Caroline's Cleaning Crew</title>
-  <meta name="description" content="Meet Caroline, owner of Caroline's Cleaning Crew: cleaning since she was a teen, former social worker, and licensed, insured house cleaner in North County San Diego.">
+  <title>About Caroline | North County San Diego House Cleaner</title>
+  <meta name="description" content="Meet Caroline, your licensed, insured, owner-operated house cleaner in North County San Diego. Learn about her experience and request a cleaning quote.">
   <link rel="canonical" href="https://carolinescleaningcrew.com/about.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/logo.png">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Caroline's Cleaning Crew">
-  <meta property="og:title" content="About Caroline | Caroline's Cleaning Crew">
-  <meta property="og:description" content="Licensed, insured, owner-operated house cleaning in North County San Diego, without judgment.">
+  <meta property="og:title" content="About Caroline | North County San Diego House Cleaner">
+  <meta property="og:description" content="Meet Caroline, your licensed, insured, owner-operated house cleaner in North County San Diego. Learn about her experience and request a cleaning quote.">
   <meta property="og:url" content="https://carolinescleaningcrew.com/about.html">
   <meta property="og:image" content="https://carolinescleaningcrew.com/assets/logo.png">
 
@@ -20,6 +20,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://carolinescleaningcrew.com/about.html#page",
+  "url": "https://carolinescleaningcrew.com/about.html",
+  "name": "About Caroline | North County San Diego House Cleaner",
+  "description": "Meet Caroline, your licensed, insured, owner-operated house cleaner in North County San Diego. Learn about her experience and request a cleaning quote.",
+  "about": {
+    "@id": "https://carolinescleaningcrew.com/#business"
+  },
+  "isPartOf": {
+    "@id": "https://carolinescleaningcrew.com/#website"
+  }
+}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -52,7 +68,7 @@
         <a href="index.html#results">Before &amp; after</a>
         <a href="about.html" aria-current="page">About</a>
         <a href="index.html#faq">FAQ</a>
-        <a href="index.html#quote" class="btn btn-small">Get a quote</a>
+        <a href="index.html#quote" class="btn btn-small" data-track="quote_click">Get a quote</a>
       </nav>
     </div>
   </header>
@@ -159,9 +175,9 @@
     <section class="section">
       <div class="container narrow cta">
         <h2>Ready to come home to a cleaner, calmer space?</h2>
-        <p>Quotes as low as $100. Send a quick request, or call or text and ask for Caroline.</p>
+        <p>Quotes as low as $100 for a studio or 1-bedroom surface clean. Send a request, or call or text and ask for Caroline.</p>
         <div class="hero-actions">
-          <a href="index.html#quote" class="btn">Get a quote</a>
+          <a href="index.html#quote" class="btn" data-track="quote_click">Get a quote</a>
           <a href="tel:+17604929338" class="btn btn-ghost" data-track="call_click">Call (760) 492-9338</a>
         </div>
       </div>
@@ -174,7 +190,7 @@
         <p class="footer-brand">Caroline's Cleaning Crew</p>
         <p>Licensed, insured, owner-operated house cleaning in North County San Diego, CA</p>
         <p>Open 7 days a week, 8am to 6pm</p>
-        <p class="footer-nav"><a href="services.html">Services</a> · <a href="clutter-hoarding-cleanup.html">Clutter cleanup</a> · <a href="about.html">About</a> · <a href="index.html#quote">Get a quote</a></p>
+        <p class="footer-nav"><a href="services.html">Services</a> · <a href="clutter-hoarding-cleanup.html">Clutter cleanup</a> · <a href="about.html">About</a> · <a href="index.html#quote" data-track="quote_click">Get a quote</a></p>
       </div>
       <div class="footer-links">
         <a href="tel:+17604929338" data-track="call_click">Call (760) 492-9338</a>
@@ -186,12 +202,13 @@
   </footer>
 
   <nav class="contact-bar" aria-label="Call or text for a quote">
-    <p class="contact-bar-label"><strong>Quotes as low as $100</strong> <span>Call or text <span class="contact-bar-number">(760) 492-9338</span></span></p>
+    <p class="contact-bar-label"><strong>Talk with Caroline</strong> <span>Call or text <span class="contact-bar-number">(760) 492-9338</span></span></p>
     <a href="tel:+17604929338" data-track="call_click">Call</a>
     <a href="sms:+17604929338" data-track="text_click">Text</a>
-    <a href="index.html#quote" class="contact-bar-quote">Get a quote</a>
+    <a href="index.html#quote" class="contact-bar-quote" data-track="quote_click">Get a quote</a>
   </nav>
 
+  <script src="analytics-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -43,3 +43,21 @@ Run `node tools/check-site.mjs`. It checks titles, descriptions, canonical URLs,
 ## Before launch
 
 See [docs/launch-blockers.md](docs/launch-blockers.md). The quote form won't deliver until a real Formspree form ID replaces `YOUR_FORM_ID`.
+
+## Inquiry and SEO updates
+
+- Service and frequency are separate choices; plan links preselect both without discarding form entries.
+- The existing job gallery appears earlier, with two examples visible and the others expandable. Obtain client permission before publishing these photos.
+- Titles and descriptions target each page's actual service and North County coverage. Service areas are visible on the homepage. Canonical URLs and sitemap paths remain stable.
+- While `YOUR_FORM_ID` remains, the form displays call/text alternatives and disables online submission. Replace the endpoint in `index.html` to enable requests, then verify real delivery and error handling.
+- Run `node tools/check-site.mjs` for development checks and `node tools/check-site.mjs --launch` before publishing. The launch check fails on the placeholder form endpoint.
+
+## Conversion measurement
+
+Set the public GA4 measurement ID in `analytics-config.js` to connect an existing property. Tracking is off while the value is empty. In GA4, disable Enhanced Measurement form interactions and review automatic page-view settings before enabling. Update privacy wording to reflect the configured analytics service.
+
+Events: `call_click`, `text_click`, `quote_click`, `quote_start`, `quote_submitted`, and `quote_error`. A call/text click measures intent, not a completed conversation. Mark `quote_submitted` as a key event in GA4. Event hooks also emit `carolines:conversion` on window for local verification. No form values are included in these events; the explicit GA4 page location excludes query strings.
+
+After the domain is connected, verify the domain in Google Search Console, submit `https://carolinescleaningcrew.com/sitemap.xml`, and inspect all four public pages. Google Business Profile setup and account-level analytics/Search Console configuration require the owner's accounts. No reviews, address, or unconfirmed claims have been added.
+
+SEO reference: https://developers.google.com/search/docs/fundamentals/seo-starter-guide

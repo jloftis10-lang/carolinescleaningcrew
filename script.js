@@ -1,6 +1,26 @@
+// Optional GA4 connection. Set the public measurement ID in analytics-config.js.
+const measurementId = window.CAROLINES_ANALYTICS?.measurementId;
+if (/^G-[A-Z0-9]+$/.test(measurementId || "")) {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  // Only the page path is sent; query parameters and form values are excluded.
+  window.gtag("config", measurementId, {
+    page_location: location.origin + location.pathname,
+    page_referrer: document.referrer ? new URL(document.referrer).origin : "",
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+  const analyticsScript = document.createElement("script");
+  analyticsScript.async = true;
+  analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+  document.head.append(analyticsScript);
+}
+
 // Analytics hook: sends event names only, never form values or contact details.
 // Does nothing until an analytics tool (gtag or Plausible) is added to the pages.
 function track(event) {
+  window.dispatchEvent(new CustomEvent("carolines:conversion", { detail: { event } }));
   if (typeof window.gtag === "function") window.gtag("event", event);
   if (typeof window.plausible === "function") window.plausible(event);
 }
@@ -58,15 +78,28 @@ if (form) {
   form.noValidate = true;
 
   // Preselect the plan from links like ?plan=monthly#quote
-  const plan = new URLSearchParams(location.search).get("plan");
-  const planInput = plan && form.querySelector(`input[name="frequency"][data-plan="${CSS.escape(plan)}"]`);
-  if (planInput) planInput.checked = true;
+  function selectPlan(plan) {
+    const recurring = ["weekly", "every-other-week", "monthly"].includes(plan);
+    const servicePlan = recurring ? "regular" : plan;
+    const serviceInput = form.querySelector(`input[name="service"][data-plan="${CSS.escape(servicePlan || "")}"]`);
+    if (!serviceInput) return;
+    serviceInput.checked = true;
+    const frequencyPlan = recurring ? plan : "once";
+    form.querySelector(`input[name="frequency"][data-plan="${frequencyPlan}"]`).checked = true;
+    for (const name of ["service", "frequency"]) {
+      form.elements[name][0].dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  }
 
   // Only the contact detail needed for the chosen method is required
   function updateContactRequirements() {
     const method = form.elements.contact_method.value;
     phone.required = method === "Call" || method === "Text";
     email.required = method === "Email";
+    document.getElementById("phone-field").hidden = method === "Email";
+    document.getElementById("email-field").hidden = method === "Call" || method === "Text";
+    phone.disabled = method === "Email";
+    email.disabled = method === "Call" || method === "Text";
     form.querySelector('[data-optional-for="phone"]').hidden = phone.required;
     form.querySelector('[data-optional-for="email"]').hidden = email.required;
   }
@@ -86,6 +119,7 @@ if (form) {
 
   const messages = {
     zip: "Enter your 5-digit ZIP code.",
+    service: "Choose the service you need.",
     frequency: "Choose how often you'd like cleaning.",
     bedrooms: "Choose the number of bedrooms.",
     bathrooms: "Choose the number of bathrooms.",
@@ -97,9 +131,10 @@ if (form) {
 
   function fieldValid(name) {
     const field = form.elements[name];
+    if (field.disabled) return true;
     if (name === "phone") {
       const digits = field.value.replace(/\D/g, "");
-      return !field.required && !field.value.trim() ? true : digits.length >= 10 && digits.length <= 11;
+      return !field.required && !field.value.trim() ? true : /^(?:1)?[2-9]\d{2}[2-9]\d{6}$/.test(digits);
     }
     if (field instanceof RadioNodeList) return !!field.value;
     return field.checkValidity() && (!field.required || field.value.trim() !== "");
@@ -108,7 +143,7 @@ if (form) {
   function showError(name, show) {
     const field = form.elements[name];
     const error = document.getElementById(
-      { frequency: "q-frequency-error", contact_method: "q-method-error" }[name] || `${field.id}-error`
+      { service: "q-service-error", frequency: "q-frequency-error", contact_method: "q-method-error" }[name] || `${field.id}-error`
     );
     error.textContent = show ? messages[name] : "";
     const targets = field instanceof RadioNodeList ? [...field] : [field];
@@ -140,8 +175,33 @@ if (form) {
     }
   });
 
+  selectPlan(new URLSearchParams(location.search).get("plan"));
+  document.querySelectorAll('a[href*="?plan="]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = new URL(link.href);
+      const currentPage = location.pathname.replace(/index\.html$/, "");
+      if (target.pathname.replace(/index\.html$/, "") !== currentPage) return;
+      event.preventDefault();
+      selectPlan(target.searchParams.get("plan"));
+      history.replaceState(null, "", target.search + "#quote");
+      document.getElementById("quote").scrollIntoView({ behavior: "smooth" });
+      form.elements.service[0].focus({ preventScroll: true });
+    });
+  });
+
+  const configured = !form.action.includes("YOUR_FORM_ID");
+  if (!configured) {
+    form.querySelector(".form-unavailable").hidden = false;
+    button.disabled = true;
+    button.textContent = "Call or text for your quote";
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!configured) {
+      form.querySelector(".form-unavailable").focus();
+      return;
+    }
     status.className = "form-status";
     status.textContent = "";
 
@@ -164,12 +224,14 @@ if (form) {
       });
       if (!response.ok) throw new Error(response.statusText);
       track("quote_submitted");
+      started = false;
       form.reset();
       updateContactRequirements();
       status.classList.add("ok");
       status.textContent =
         "Thanks, your request was sent. Caroline will review it and reply using the contact method you chose. This is a request, not a booked appointment.";
     } catch {
+      track("quote_error");
       status.classList.add("err");
       status.textContent =
         "Sorry, your request didn't go through. Your details are still filled in, so please try again, or call or text (760) 492-9338.";
