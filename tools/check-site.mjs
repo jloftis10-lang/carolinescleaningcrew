@@ -6,7 +6,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SITE = "https://carolinescleaningcrew.com/";
+const SITE = "https://www.carolinescleaningcrew.com/";
 const PHONE = "+17604929338";
 const errors = [];
 const launch = process.argv.includes("--launch");

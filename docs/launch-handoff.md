@@ -16,13 +16,13 @@ How the site works, what to check before going live, and how to tell whether it'
 - [ ] Formspree: create the form under Caroline's email, add the ID, and turn on its spam filtering
 - [ ] **Authorized test:** with Caroline's OK, send one clearly labelled test request on the live site. Confirm it reaches her inbox with every field (including multiple add-ons) and the success message appears. Delete the test afterwards.
 - [ ] On a real phone, tap Call and Text in the bottom bar and confirm they open the dialer and messages with (760) 492-9338
-- [ ] Confirm the live 404 by visiting `https://carolinescleaningcrew.com/does-not-exist`
+- [ ] Confirm the live 404 by visiting `https://www.carolinescleaningcrew.com/does-not-exist`
 
 ## Google, maps, and listings (Caroline does these; nothing has been created)
 
 - [ ] **Google Business Profile:** create or claim it and complete verification. Set it up as a **service-area business**. Hide the home address because customers aren't served there. List only the confirmed service areas.
 - [ ] Keep the name, phone, website, and categories identical everywhere
-- [ ] **Google Search Console:** verify the domain and submit `https://carolinescleaningcrew.com/sitemap.xml`
+- [ ] **Google Search Console:** verify the domain and submit `https://www.carolinescleaningcrew.com/sitemap.xml`
 - [ ] **Bing Places** (can import from Google), **Apple Business Connect**, and **Yelp**, all with the same details
 - [ ] Other relevant local listings only if they're real and maintained (e.g. Nextdoor business page)
 
@@ -66,4 +66,4 @@ One row per inquiry, with these columns:
 - Each month, count how many inquiries reach each column, and compare by source.
 
 ### Door hanger QR code (recommendation only)
-On the next print run, point the QR code at a distinct URL so door-hanger visits can be counted separately, for example `https://carolinescleaningcrew.com/?utm_source=door-hanger&utm_medium=print&utm_campaign=door-hanger-1`. This needs analytics on the site to be counted.
+On the next print run, point the QR code at a distinct URL so door-hanger visits can be counted separately, for example `https://www.carolinescleaningcrew.com/?utm_source=door-hanger&utm_medium=print&utm_campaign=door-hanger-1`. This needs analytics on the site to be counted.

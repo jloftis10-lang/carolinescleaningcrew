@@ -1,7 +1,7 @@
 # Caroline's Cleaning Crew
 
 Website for Caroline's Cleaning Crew, a licensed, insured, owner-operated house cleaning business in North County San Diego.
-Domain: https://carolinescleaningcrew.com (not live yet; see Hosting below)
+Domain: https://www.carolinescleaningcrew.com (not live yet; see Hosting below)
 
 Plain HTML/CSS/JS with no build step, hosted on GitHub Pages. Open `index.html` in a browser to preview.
 GitHub Pages is on: **pushing to `main` publishes to the live site** (the domain shows it once its DNS points to GitHub).
@@ -58,6 +58,6 @@ Set the public GA4 measurement ID in `analytics-config.js` to connect an existin
 
 Events: `call_click`, `text_click`, `quote_click`, `quote_start`, `quote_submitted`, and `quote_error`. A call/text click measures intent, not a completed conversation. Mark `quote_submitted` as a key event in GA4. Event hooks also emit `carolines:conversion` on window for local verification. No form values are included in these events; the explicit GA4 page location excludes query strings.
 
-After the domain is connected, verify the domain in Google Search Console, submit `https://carolinescleaningcrew.com/sitemap.xml`, and inspect all four public pages. Google Business Profile setup and account-level analytics/Search Console configuration require the owner's accounts. No reviews, address, or unconfirmed claims have been added.
+After the domain is connected, verify the domain in Google Search Console, submit `https://www.carolinescleaningcrew.com/sitemap.xml`, and inspect all four public pages. Google Business Profile setup and account-level analytics/Search Console configuration require the owner's accounts. No reviews, address, or unconfirmed claims have been added.
 
 SEO reference: https://developers.google.com/search/docs/fundamentals/seo-starter-guide

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carolinescleaningcrew.com/sitemap.xml
+Sitemap: https://www.carolinescleaningcrew.com/sitemap.xml
