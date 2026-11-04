@@ -1,0 +1,4 @@
+# Files Vercel should not publish: internal notes, tooling, and GitHub Pages leftovers
+README.md
+docs
+tools

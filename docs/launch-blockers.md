@@ -1,6 +1,6 @@
 # Launch blockers
 
-Decisions only Caroline can make. The site should not be called launch-ready until the **Must fix** items are resolved. These notes are excluded from the website (`_config.yml`), but the GitHub repository is public, so anyone can read them there.
+Decisions only Caroline can make. The site should not be called launch-ready until the **Must fix** items are resolved. These notes are excluded from the website (`.vercelignore`), but the GitHub repository is public, so anyone can read them there.
 
 ## Confirmed (2026-11-02, relayed by the site owner)
 
@@ -15,7 +15,7 @@ These are now on the site:
 ## Must fix before launch
 
 1. **Quote form doesn't deliver.** The form still posts to `https://formspree.io/f/YOUR_FORM_ID`. Create a Formspree form under Caroline's email, replace the ID in `index.html`, then do one authorized test submission.
-2. **The domain still points to GoDaddy.** GitHub Pages was turned on 2026-11-01, but carolinescleaningcrew.com still shows GoDaddy's "Coming Soon" page (160.153.0.129). Change the DNS records at GoDaddy as described in the README, then turn on Enforce HTTPS.
+2. ~~**Publish the site.**~~ Done: live on Vercel at https://www.carolinescleaningcrew.com since early November 2026, and verified in Google Search Console.
 3. **What a "surface clean" includes.** The FAQ says quotes start at $100 for a surface clean of a studio or 1-bedroom home. Does that cover the full checklist on `services.html`, or less?
 4. **First visit.** Is an initial deep clean required before recurring service? The site doesn't say either way.
 5. **Client OK for the before & after photos.** The living room, kitchen, oven, fridge, and microwave photos (added 2026-11-01) are from inside a client's home. The living-room shots show the family's toys, framed photos on the mantel, and the view out the back door. Confirm the homeowner is happy for them to be on a public website.

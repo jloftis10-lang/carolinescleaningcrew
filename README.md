@@ -1,24 +1,26 @@
 # Caroline's Cleaning Crew
 
 Website for Caroline's Cleaning Crew, a licensed, insured, owner-operated house cleaning business in North County San Diego.
-Domain: https://www.carolinescleaningcrew.com (not live yet; see Hosting below)
+Live at https://www.carolinescleaningcrew.com
 
-Plain HTML/CSS/JS with no build step, hosted on GitHub Pages. Open `index.html` in a browser to preview.
-GitHub Pages is on: **pushing to `main` publishes to the live site** (the domain shows it once its DNS points to GitHub).
+Plain HTML/CSS/JS with no build step, hosted on Vercel. Open `index.html` in a browser to preview.
+**Pushing to `main` publishes to the live site.**
 
 ## Files
 
 - `index.html` – homepage: recurring plans, "quotes as low as $100", before & after, FAQ, quote form
 - `services.html` – room-by-room checklist, add-ons, other services
 - `about.html` – about Caroline
+- `deep-cleaning.html` – deep cleaning
+- `move-out-cleaning.html` – move-in / move-out cleaning
 - `clutter-hoarding-cleanup.html` – judgment-free clutter and hoarding cleanup
-- `404.html` – not-found page (GitHub Pages serves it with a 404 status)
+- `404.html` – not-found page (Vercel serves it with a 404 status)
 - `styles.css` – styles; brand colors are at the top in `:root`
 - `script.js` – menu, quote form, call/text banner, analytics hooks
-- `assets/` – logo, favicon, and `results/` before & after photos (resized to 1000px, metadata stripped)
+- `assets/` – logo, favicon, `results/` before & after photos (900px squares, metadata stripped), and `og/` link-preview images (1200×630)
 - `tools/` – the pre-publish check (below)
 - `docs/` – [launch blockers](docs/launch-blockers.md) and [launch handoff](docs/launch-handoff.md)
-- `_config.yml` – keeps `docs/`, `tools/`, and this README off the public website
+- `.vercelignore` – keeps `docs/`, `tools/`, and this README off the public website (the GitHub repo itself is public)
 
 ## Prices
 
@@ -32,13 +34,13 @@ Run `node tools/check-site.mjs`. It checks titles, descriptions, canonical URLs,
 
 `assets/caroline.jpg` (square, 600px) is shown on the homepage and About page. To change it, replace that file.
 
-## Hosting (GitHub Pages)
+## Hosting (Vercel)
 
-1. Repo **Settings → Pages**: deploy from branch `main`, folder `/ (root)`. The custom domain comes from the `CNAME` file.
-2. At the domain registrar, replace the existing records for the domain with:
-   - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` record for `www` → `jloftis10-lang.github.io`
-3. Back in Settings → Pages, enable **Enforce HTTPS** once the certificate is issued.
+The site is deployed by Vercel from `main`. The main address is `www.carolinescleaningcrew.com`; Vercel redirects the bare domain to it, and every canonical URL, the sitemap, and `robots.txt` use the www address. If the main domain is ever changed in Vercel, update those to match.
+
+## Link previews
+
+Each page sets an `og:image` from `assets/og/` (1200×630), shown when the page is shared by text, on Facebook, and so on. To refresh a page's preview after changing its image, use the Facebook Sharing Debugger.
 
 ## Before launch
 
@@ -58,6 +60,6 @@ Set the public GA4 measurement ID in `analytics-config.js` to connect an existin
 
 Events: `call_click`, `text_click`, `quote_click`, `quote_start`, `quote_submitted`, and `quote_error`. A call/text click measures intent, not a completed conversation. Mark `quote_submitted` as a key event in GA4. Event hooks also emit `carolines:conversion` on window for local verification. No form values are included in these events; the explicit GA4 page location excludes query strings.
 
-After the domain is connected, verify the domain in Google Search Console, submit `https://www.carolinescleaningcrew.com/sitemap.xml`, and inspect all four public pages. Google Business Profile setup and account-level analytics/Search Console configuration require the owner's accounts. No reviews, address, or unconfirmed claims have been added.
+After the domain is connected, verify the domain in Google Search Console, submit `https://www.carolinescleaningcrew.com/sitemap.xml`, and inspect all six public pages. Google Business Profile setup and account-level analytics/Search Console configuration require the owner's accounts. No reviews, address, or unconfirmed claims have been added.
 
 SEO reference: https://developers.google.com/search/docs/fundamentals/seo-starter-guide

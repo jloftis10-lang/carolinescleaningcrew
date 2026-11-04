@@ -4,10 +4,10 @@ How the site works, what to check before going live, and how to tell whether it'
 
 ## How the site is built
 
-- Plain HTML/CSS/JS on **GitHub Pages**, published from `main`. Pushing to `main` deploys to production.
+- Plain HTML/CSS/JS on **Vercel**, published from `main`. Pushing to `main` deploys to production.
 - The quote form uses **Formspree** with a honeypot field (`_gotcha`) for spam. With JavaScript the form validates in the page and shows success only after Formspree confirms. Without JavaScript the browser's own validation runs and the form posts directly to Formspree. Phone or email can't be made conditionally required without JavaScript.
 - The site lists no prices, only "Quotes as low as $100". Before publishing, run `node tools/check-site.mjs`; it flags any other dollar amount.
-- `404.html` is served by GitHub Pages with a real 404 status.
+- `404.html` is served by Vercel with a real 404 status.
 
 ## Before launch
 
