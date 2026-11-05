@@ -9,16 +9,18 @@ These are now on the site:
 - **Licensed and insured:** yes. "Bonded" is still unconfirmed and stays off the site.
 - **Hours:** open 7 days a week, 8am to 6pm.
 - **Service area:** North County San Diego: Carlsbad, Oceanside, Encinitas, Solana Beach, Rancho Santa Fe, San Marcos, Vista, Escondido, Poway, and Rancho Bernardo. La Jolla and Del Mar are not listed.
-- **$100:** a surface clean of a studio or 1-bedroom home. The site shows no other prices ("Quotes as low as $100"), including on the call/text banner that stays on screen.
+- **$100:** a surface clean of a studio or 1-bedroom home. A surface clean is lighter than the full checklist (confirmed 2026-11-05).
+- **Before & after photos:** Caroline has the client's permission to use them (confirmed 2026-11-05).
+- **Pricing on the site:** no other prices are shown beyond "Quotes as low as $100".
 - **Checklist, bio, carpet steam and upholstery add-ons, and the clutter & hoarding page** were merged in from Caroline's update. Her mention of her child in the bio was softened to "to care for my family".
 
 ## Must fix before launch
 
 1. **Quote form doesn't deliver.** The form still posts to `https://formspree.io/f/YOUR_FORM_ID`. Create a Formspree form under Caroline's email, replace the ID in `index.html`, then do one authorized test submission.
 2. ~~**Publish the site.**~~ Done: live on Vercel at https://www.carolinescleaningcrew.com since early November 2026, and verified in Google Search Console.
-3. **What a "surface clean" includes.** The FAQ says quotes start at $100 for a surface clean of a studio or 1-bedroom home. Does that cover the full checklist on `services.html`, or less?
+3. ~~**What a "surface clean" includes.**~~ Done: lighter than the full checklist; the homepage, FAQ, and Services page say so.
 4. **First visit.** Is an initial deep clean required before recurring service? The site doesn't say either way.
-5. **Client OK for the before & after photos.** The living room, kitchen, oven, fridge, and microwave photos (added 2026-11-01) are from inside a client's home. The living-room shots show the family's toys, framed photos on the mantel, and the view out the back door. Confirm the homeowner is happy for them to be on a public website.
+5. ~~**Client OK for the before & after photos.**~~ Done: Caroline has the client's permission. Get the same OK for any future job photos.
 6. **Clutter & hoarding page.** Before promising more on `clutter-hoarding-cleanup.html`, decide: how jobs are priced, whether she takes photos by text for estimates, haul-away or sort-and-bag only, whether anything is thrown away without the client's OK, and situations she won't take (biohazard, pests, mold). The page currently promises none of these.
 
 ## Reconciled for review

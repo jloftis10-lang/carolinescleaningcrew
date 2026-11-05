@@ -49,7 +49,7 @@ See [docs/launch-blockers.md](docs/launch-blockers.md). The quote form won't del
 ## Inquiry and SEO updates
 
 - Service and frequency are separate choices; plan links preselect both without discarding form entries.
-- The existing job gallery appears earlier, with two examples visible and the others expandable. Obtain client permission before publishing these photos.
+- The existing job gallery appears earlier, with two examples visible and the others expandable. Caroline has the client's permission for the current photos; get the same OK before adding new ones.
 - Titles and descriptions target each page's actual service and North County coverage. Service areas are visible on the homepage. Canonical URLs and sitemap paths remain stable.
 - While `YOUR_FORM_ID` remains, the form displays call/text alternatives and disables online submission. Replace the endpoint in `index.html` to enable requests, then verify real delivery and error handling.
 - Run `node tools/check-site.mjs` for development checks and `node tools/check-site.mjs --launch` before publishing. The launch check fails on the placeholder form endpoint.
