@@ -43,7 +43,7 @@ Add-ons are listed without prices and included in the quote. Before quoting them
 
 ## Brand and trust
 
-- **Name:** the logo says "Caroline's Cleaning"; the domain and site say "Caroline's Cleaning Crew". "Crew" may also suggest a staff the business doesn't have. Decide on one name.
+- **Name:** Caroline's Cleaning Crew (confirmed 2026-11-05). `assets/logo.png` now reads "CAROLINE'S / CLEANING CREW", with the new line set in Outfit ExtraBold to match the original. Use this exact name on Google, Yelp, and every listing. Ask the original designer for a vector version if one exists, for print.
 - **Who cleans:** does Caroline do every visit, or do helpers sometimes attend? The site says "owner-operated" and "you deal directly with the owner", but it doesn't promise she personally cleans every visit.
 - **About page bio:** now Caroline's own bio, lightly edited (her child's diagnosis was replaced with "to care for my family"). She should read the final version.
 - **Owner photo is AI-generated.** `assets/caroline.jpg` is cropped from the Reface image in the Drive "Social" folder, used at the owner's request (2026-11-01). Swap in a real photo when there is one.
